@@ -6,7 +6,7 @@ Playbook used for create a ansible user.
 
 Variables:
 
-`user`: The user that will be created in the remote host.
+`user`: The user that will be created in the remote host.  
 `key_file`: Path to the public key file.
 
 Tasks performed:
