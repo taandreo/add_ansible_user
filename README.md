@@ -21,7 +21,7 @@ Set some specific settings for playing the playbook.
 
 Among them, some can be highlighted:
 
-`ask_pass = true`: Initiate a prompt to collect the login password from the remote host.
+`ask_pass = true`: Initiate a prompt to collect the login password from the remote host.  
 `become_ask_pass = true`: Initiate a prompt to collect the sudo password from the remote host. 
 
 ## inventory
