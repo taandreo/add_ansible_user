@@ -1,0 +1,31 @@
+---
+# Author: Tairan Andreo
+- name: Add Ansible User and copy key
+  become: yes
+  hosts: all
+  vars:
+    key_file: ~/.ssh/id_rsa.pub
+    user: ansible
+  
+  tasks:
+    - name: Create Ansible User
+      user:
+        name: "{{ user }}"
+        shell: /bin/bash
+        home: "/home/{{ user }}"
+        state: present
+        comment: "Ansible User"
+
+    - name: Copy Key file
+      authorized_key:
+        user: "{{ user }}"
+        state: present
+        key: "{{ lookup('file', key_file) }}"
+
+    - name: Config /etc/sudoers.d/{{ user }} file
+      copy:
+        dest: "/etc/sudoers.d/{{ user }}"
+        content: "{{ user }} ALL=(ALL) NOPASSWD:ALL"
+        owner: root
+        group: root
+        mode: 0440
